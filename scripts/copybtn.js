@@ -32,7 +32,7 @@ function getIssueDataAndWriteToClipboard(issueId)
     const issueAssignee = data['fields']['assignee'] ? data['fields']['assignee'].displayName : 'Unassigned';
 
     storageGet('format').then(function (storageData) {
-      const format = storageData.format || '[{key}] {title}';
+      const format = storageData.format || 'mod ({key}): {title}';
       const outputText = format
         .replaceAll('{key}', issueKey)
         .replaceAll('{title}', issueTitle)
