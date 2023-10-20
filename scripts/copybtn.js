@@ -61,33 +61,19 @@ function createButton(parent, buttonID, buttonTxt) {
   button.className = "CopyBtnForJira";
   parent.appendChild(button);
 
-    if (button.id == buttonIDJiraSnippet) {
-        button.onclick = function () {
-            const issueId = getIssueId();
-            if (issueId == null) {
-                button.textContent = 'Error: No Issue id found!';
-            }
-            getIssueDataAndWriteToClipboard(issueId);
-            button.textContent = 'Text has been copied!';
-            setTimeout(function () {
-                button.textContent = buttonText;
-            }, 2000);
-        };
-    }
-    else if (buttonID == buttonIDCopyID) {
-        button.onclick = function () {
-            const issueId = getIssueId();
-            if (issueId == null) {
-                button.textContent = 'Error: No Issue id found!';
-            }
-            navigator.clipboard.writeText(issueId)
+    button.onclick = function () {
+        const issueId = getIssueId();
+        if (issueId == null) {
+            button.textContent = 'Error: No Issue id found!';
+        }
 
-            button.textContent = 'ID has been copied!';
-            setTimeout(function () {
-                button.textContent = buttonText;
-            }, 2000);
-        };
-    }
+        button.id == buttonIDCopyID ? navigator.clipboard.writeText(issueId) : getIssueDataAndWriteToClipboard(issueId);
+        
+        button.textContent = 'Text has been copied!';
+        setTimeout(function () {
+            button.textContent = buttonText;
+        }, 2000);
+    };
 }
 
 var buttonIDJiraSnippet = 'CopyBtnJiraSnippet';
