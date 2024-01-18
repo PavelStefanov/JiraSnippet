@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Jira Snippet",
-  "version": "2.2",
-  "description": "Jira Snippet is a browser extension that streamlines your Jira experience by allowing you to quickly copy issue information in a customizable format. It's easy to configure and enables you to choose what data you want to include when copying, such as issue title, ID, status, and more. The add-on integrates seamlessly with both Jira Cloud and Server and is compatible with Chrome, Firefox, Edge and Opera browsers.",
-  "homepage_url": "https://github.com/Malo196/JiraSnippet",
+  "version": "3",
+  "description": "This browser extension simplifies the process of copying Jira issue titles as formatted links. When working with Jira, you can quickly generate formatted links to share or reference specific issues.",
+  "homepage_url": "https://github.com/PavelStefanov/JiraSnippet",
   "author": "https://github.com/daemonLibra",
   "icons": {
     "48": "icons/logo_48.png"
@@ -13,18 +13,14 @@
     "default_title": "Jira Snippet",
     "default_popup": "popup/info.html"
   },
-  "background": {
-    "service_worker": "scripts/contextMenu.js"
-  },
   "content_scripts": [
     {
       "matches": [
         "*://*.atlassian.net/*",
-        "*://*.atlassian.com/*"
+        "*://*.atlassian.com/*",
+        "*://*.jira.lamoda.ru/*"
       ],
       "js": [
-        "scripts/storage-utils.js",
-        "scripts/settings.js",
         "scripts/copybtn.js"
       ],
       "run_at": "document_start",
@@ -32,9 +28,5 @@
         "css/style.css"
       ]
     }
-  ],
-  "permissions": [
-    "storage",
-    "contextMenus"
   ]
 }
