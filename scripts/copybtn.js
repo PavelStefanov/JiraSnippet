@@ -39,9 +39,10 @@ function createButton(parent, buttonID, buttonTxt) {
 var buttonIDJiraSnippet = 'CopyBtnJiraSnippet';
 
 var observer = new MutationObserver(function (mutations, me) {
+  var summaryElement = document.getElementById("summary-val");
   var parentJiraButton = document.getElementsByClassName('aui-toolbar2-primary')[0];
 
-  if (parentJiraButton) {
+  if (summaryElement && parentJiraButton) {
     if (!document.getElementById(buttonIDJiraSnippet)) {
       createButton(parentJiraButton, buttonIDJiraSnippet, 'Copy link');
     }
